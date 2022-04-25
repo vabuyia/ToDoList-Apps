@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
@@ -25,18 +26,17 @@ module.exports = {
     ],
   },
 
-  plugins: [new BundleAnalyzerPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Output Management',
+      template: './src/index.html',
+    }),
+  ],
 
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-    compress: true,
-    port: 9000,
+    static: './dist',
   },
 };
-
-
 
 
 
