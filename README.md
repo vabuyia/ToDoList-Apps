@@ -35,8 +35,8 @@ In this project, you will build a simple HTML list of To Do tasks. This simple w
 
 👤 **Vincent Abuya Obunga**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
+- GitHub: [@githubhandle](https://github.com/vabuyia)
+- Twitter: [@twitterhandle](https://twitter.com/vabuya)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 
