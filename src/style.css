@@ -1,3 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    background-color: bisque;
+  height: 100vh;
+  width: 100%;
+  background: #dfdad9;
+  font-family: 'poppins', Arial, Helvetica, sans-serif;
+  display: flex;
+}
+
+.container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  max-width: 600px;
+  border-radius: 10px;
+  height: 500px;
+}
+
+.header {
+  padding: 2em;
+}
+
+.header h3 {
+  text-align: center;
+}
+
+.list {
+  flex-grow: 1;
+  padding: 2em;
+  overflow-y: scroll;
+}
+
+.to-do {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+}
+
+.clearAll button {
+  border: 1px solid #eee;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  flex-grow: 1;
+  padding: 1em;
+  outline: none;
+  min-width: 400px;
+  max-width: 600px;
+}
+
+.add-task {
+  padding: 2em;
+  display: flex;
+}
+
+.add-task input {
+  border: 1px solid #eee;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  flex-grow: 1;
+  padding: 1em;
+  outline: none;
+}
+
+.add-task button {
+  outline: none;
+  border: none;
+  padding: 1em;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+}
+
+.add-task input:hover {
+  border: 1px solid #ddd;
+}
+
+.add-task input:active {
+  border: 1px solid #ccc;
+}
+
+.add-task input:focus {
+  border: 1px solid #3498db;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #808080;
+  border: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #343333;
+  border-radius: 10px;
 }
