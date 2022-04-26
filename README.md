@@ -5,6 +5,9 @@ In this project, you will build a simple HTML list of To Do tasks. This simple w
 
 ## Built With
 - Major languages
+HTML
+CSS
+Javascript
 
 ### Prerequisites
 
