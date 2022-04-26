@@ -1,4 +1,3 @@
-
 const listElement = document.querySelector('ul');
 
 const taskList = [
@@ -20,7 +19,7 @@ const taskList = [
 ];
 
 function populateList() {
-  for (let i = 0; i < taskList.length; i++) {
+  for (let i = 0; i < taskList.length; i += 1) {
     const newItem = document.createElement('li');
 
     const inputCheckbox = document.createElement('input');
@@ -42,8 +41,6 @@ function populateList() {
     newItem.appendChild(anchorElement);
 
     listElement.appendChild(newItem);
-
-    
   }
 }
 
