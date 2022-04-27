@@ -1,3 +1,5 @@
+import './style.css';
+
 const listElement = document.querySelector('ul');
 
 const taskList = [
