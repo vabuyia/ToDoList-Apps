@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Wbpack Exercise</title>
-<script defer src="main.js"></script></head>
-<body>
-    <h1>Hello webpack!</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>To Do List App</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <div class="container">
+      <div class="todo-list">
+        <div class="header">
+          <h3><span id="total-tasks">0</span><span>Tasks</span></h3>
+        </div>
+
+        <div class="to-do">
+          <h5>
+            <span id="today">Today's To Do</span
+            ><span><i class="fa-solid fa-arrows-rotate"></i></span>
+          </h5>
+        </div>
+
+        <form class="add-task">
+          <input type="text" placeholder="Add to your list" />
+          <button><i class="fa fa-plus"></i></button>
+        </form>
+
+        <div class="list">
+          <ul></ul>
+        </div>
+
+        <div class="clearAll">
+          <button>Clear all completed</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="index.js"></script>
+  </body>
 </html>
