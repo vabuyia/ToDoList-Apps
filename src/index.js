@@ -9,13 +9,13 @@ const taskList = [
     completed: false,
   },
   {
-    index: 2,
-    description: 'Visit Friends and Family',
+    index: 1,
+    description: 'Going home',
     completed: false,
   },
   {
-    index: 1,
-    description: 'Going home',
+    index: 2,
+    description: 'Visit Friends and Family',
     completed: false,
   },
 ];
