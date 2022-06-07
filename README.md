@@ -1,25 +1,37 @@
-## To Do list: list structure
+## To Do list
+
+A simple To do List. It simply lists the things that you need to do and allows you to mark them as complete. A tool to help you organize your day!
 
 ## Description
+
 In this project, you will build a simple HTML list of To Do tasks. This simple web page will be built using webpack and served by a webpack dev server.
 
 ## Built With
+
 - Major languages
-HTML
-CSS
-Javascript
+  HTML
+  CSS
+  Javascript
+  Webpack
+
+Screenshot:/image/addremove.png
+
+Live DEMO[]
 
 ### Prerequisites
 
 ### Setup
 
 ### Install
+
     - node
 
 ### Usage
+
 ### Setup
 
 ### Run tests
+
 ```
 - npm install
 - Clone the repository to your local machine.
@@ -28,11 +40,11 @@ Javascript
 
 ### Deployment
 
+run:
 
- run:
- ```
- npm run build
- ```
+```
+npm run build
+```
 
 ## Authors
 
@@ -42,20 +54,18 @@ Javascript
 - Twitter: [@twitterhandle](https://twitter.com/vabuya)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
-
 ## 🤝 Contributing
-
 
 ## Basic Setup
 
 First let's create a directory, initialize npm
 
->> mkdir [folder] && cd [folder]
+> > mkdir [folder] && cd [folder]
 
->> npm init -y
+> > npm init -y
 
->> npm install webpack webpack-cli --save-dev
+> > npm install webpack webpack-cli --save-dev
 
 ## To bundle the lodash dependency with index.js, we'll need to install the library locally:
 
->> npm install --save lodash
+> > npm install --save lodash
