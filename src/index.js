@@ -43,7 +43,7 @@ export const generateList = (array) => {
     }
     listItem.appendChild(taskInput);
 
-    const garbage = document.createElement('i')
+    const garbage = document.createElement('i');
     garbage.classList.add('fas', 'fa-trash-alt', 'icon', 'trash');
     garbage.setAttribute('index', `${item.index}`);
     garbage.setAttribute('job', 'delete');
@@ -51,7 +51,7 @@ export const generateList = (array) => {
 
     myList.appendChild(listItem);
   }
-}
+};
 
 document.querySelector('#add-input').addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
@@ -90,7 +90,7 @@ document.getElementById('delete-all').addEventListener('click', (e) => {
 export const saveDataLocally = (toSave) => {
   const stringifiedList = JSON.stringify(toSave);
   localStorage.setItem('list', stringifiedList);
-}
+};
 
 window.onload = () => {
   if (localStorage.getItem('list') !== null) {

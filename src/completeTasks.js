@@ -21,4 +21,4 @@ export const clearComplete = () => {
   filteredTasks.forEach((task) => {
     removeItemAt(task.index);
   });
-}
+};
