@@ -14,7 +14,7 @@ In this project, you will build a simple HTML list of To Do tasks. This simple w
   Javascript
   Webpack
 
-Screenshot:/image/addremove.png
+Screenshot:
 
 Live DEMO[https://vabuyia.github.io/ToDoList-Apps/]
 
