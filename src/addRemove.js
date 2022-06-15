@@ -32,3 +32,6 @@ export const changeInput = (element) => {
   myTasks()[elementIndex - 1].description = newDescription;
   saveDataLocally(myTasks());
 };
+
+
+module.exports = add;
