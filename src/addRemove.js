@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/no-cycle
-//const { generateList, saveDataLocally } = require('./index.js');
+// const { generateList, saveDataLocally } = require('./index.js');
 
-//const myTasks  = require('./index.js');
+// const myTasks  = require('./index.js');
 
-let tasks = []
+const tasks = [];
 function myTasks() {
   return tasks;
 }
@@ -17,11 +17,11 @@ const add = (textInputValue) => {
 
   const addedItem = TaskItem;
   myTasks().push(addedItem);
-  //saveDataLocally(myTasks());
+  // saveDataLocally(myTasks());
   return myTasks();
 };
 
- const clearDiv = (div) => {
+const clearDiv = (div) => {
   while (div.firstChild) {
     div.removeChild(div.firstChild);
   }
@@ -29,16 +29,16 @@ const add = (textInputValue) => {
 
 const removeItemAt = (index) => {
   myTasks().splice(index - 1, 1);
-  generateList(myTasks());
-  saveDataLocally(myTasks());
-}
+  return myTasks();
+};
 
 const changeInput = (element) => {
   const newDescription = element.value;
   const elementIndex = element.getAttribute('index');
   myTasks()[elementIndex - 1].description = newDescription;
-  saveDataLocally(myTasks());
+  // saveDataLocally(myTasks());
 };
 
-
-module.exports = {add, myTasks};
+module.exports = {
+  add, myTasks, removeItemAt, clearDiv, changeInput,
+};

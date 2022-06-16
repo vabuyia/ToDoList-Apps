@@ -1,108 +1,109 @@
 /* eslint-disable no-unused-vars */
-//import _ from 'lodash'
-//import './style.css'
+// import _ from 'lodash'
+// import './style.css'
 
 // eslint-disable-next-line import/no-cycle
-const { add, clearDiv, changeInput, removeItemAt } = require('./addRemove.js');
+const {
+  add, clearDiv, changeInput, removeItemAt,
+} = require('./addRemove.js');
 // eslint-disable-next-line import/no-cycle
-//const { completeThis, clearComplete } = require('./completeTasks.js'); 
+const { completeThis, clearComplete } = require('./completeTasks.js');
 
-let tasks = []
+let tasks = [];
 function myTasks() {
-  return tasks
+  return tasks;
 }
 
-//const myList = document.querySelector('.task-lists')
+const myList = document.querySelector('.task-lists');
 
 const generateList = (array) => {
-  array = array.sort((a, b) => a.index - b.index)
+  array = array.sort((a, b) => a.index - b.index);
 
-  clearDiv(myList)
+  clearDiv(myList);
 
   for (let i = 0; i < array.length; i += 1) {
-    const item = array[i]
-    item.index = i + 1
-    const listItem = document.createElement('li')
-    listItem.classList.add('item')
+    const item = array[i];
+    item.index = i + 1;
+    const listItem = document.createElement('li');
+    listItem.classList.add('item');
 
-    const itemCheckbox = document.createElement('input')
-    itemCheckbox.type = 'checkbox'
-    itemCheckbox.checked = item.completed
-    itemCheckbox.setAttribute('index', `${item.index}`)
-    itemCheckbox.setAttribute('job', 'complete')
-    listItem.appendChild(itemCheckbox)
+    const itemCheckbox = document.createElement('input');
+    itemCheckbox.type = 'checkbox';
+    itemCheckbox.checked = item.completed;
+    itemCheckbox.setAttribute('index', `${item.index}`);
+    itemCheckbox.setAttribute('job', 'complete');
+    listItem.appendChild(itemCheckbox);
 
-    const taskInput = document.createElement('input')
-    taskInput.setAttribute('job', 'change')
-    taskInput.setAttribute('type', 'text')
-    taskInput.setAttribute('index', `${item.index}`)
-    taskInput.setAttribute('value', `${item.description}`)
-    taskInput.classList.add('description-text')
+    const taskInput = document.createElement('input');
+    taskInput.setAttribute('job', 'change');
+    taskInput.setAttribute('type', 'text');
+    taskInput.setAttribute('index', `${item.index}`);
+    taskInput.setAttribute('value', `${item.description}`);
+    taskInput.classList.add('description-text');
     if (item.completed) {
-      taskInput.classList.add('complete')
+      taskInput.classList.add('complete');
     }
-    listItem.appendChild(taskInput)
+    listItem.appendChild(taskInput);
 
-    const garbage = document.createElement('i')
-    garbage.classList.add('fas', 'fa-trash-alt', 'icon', 'trash')
-    garbage.setAttribute('index', `${item.index}`)
-    garbage.setAttribute('job', 'delete')
-    listItem.appendChild(garbage)
+    const garbage = document.createElement('i');
+    garbage.classList.add('fas', 'fa-trash-alt', 'icon', 'trash');
+    garbage.setAttribute('index', `${item.index}`);
+    garbage.setAttribute('job', 'delete');
+    listItem.appendChild(garbage);
 
-    myList.appendChild(listItem)
+    myList.appendChild(listItem);
   }
-}
+};
 
 document.querySelector('#add-input').addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
-const textInputValue = document.querySelector('#add-input').value
-    add(textInputValue)
-    
+    const textInputValue = document.querySelector('#add-input').value;
+    add(textInputValue);
 
-    const retrievedList = JSON.parse(localStorage.getItem('list'))
-    generateList(retrievedList)
+    const retrievedList = JSON.parse(localStorage.getItem('list'));
+    generateList(retrievedList);
   }
-})
+});
+
+const saveDataLocally = (toSave) => {
+  const stringifiedList = JSON.stringify(toSave);
+  localStorage.setItem('list', stringifiedList);
+};
 
 myList.addEventListener('click', (event) => {
-  const elementClicked = event.target
-  const job = elementClicked.getAttribute('job')
-  const clickedIndex = elementClicked.getAttribute('index')
+  const elementClicked = event.target;
+  const job = elementClicked.getAttribute('job');
+  const clickedIndex = elementClicked.getAttribute('index');
   if (job === 'delete') {
-    removeItemAt(clickedIndex)
+    removeItemAt(clickedIndex);
+    generateList(myTasks());
+    saveDataLocally(myTasks());
   }
   if (job === 'complete') {
-    completeThis(elementClicked)
+    completeThis(elementClicked);
   }
-})
+});
 
 myList.addEventListener('change', (e) => {
   if (e.target.getAttribute('job') === 'change') {
-    const changedElement = e.target
-    changeInput(changedElement)
+    const changedElement = e.target;
+    changeInput(changedElement);
   }
-})
+});
 
 document.getElementById('delete-all').addEventListener('click', (e) => {
   // let myParsedArray = JSON.parse(localStorage.getItem('list'));
-  e.preventDefault()
-  clearComplete(myTasks())
-  generateList(tasks)
-})
-
-const saveDataLocally = (toSave) => {
-  const stringifiedList = JSON.stringify(toSave)
-  localStorage.setItem('list', stringifiedList)
-}
-
+  e.preventDefault();
+  clearComplete(myTasks());
+  generateList(tasks);
+});
 
 window.onload = () => {
   if (localStorage.getItem('list') !== null) {
-    const retrievedList = JSON.parse(localStorage.getItem('list'))
-    tasks = retrievedList
-    generateList(tasks)
+    const retrievedList = JSON.parse(localStorage.getItem('list'));
+    tasks = retrievedList;
+    generateList(tasks);
   }
-}
+};
 
-module.exports= {myTasks, generateList};
-
+module.exports = { myTasks, generateList };
