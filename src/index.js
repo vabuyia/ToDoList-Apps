@@ -1,49 +1,81 @@
-import './style.css';
+/* eslint-disable no-unused-vars */
+import _ from 'lodash'
+import './style.css'
 
-const listElement = document.querySelector('ul');
+// eslint-disable-next-line import/no-cycle
+import { add, clearDiv, changeInput, removeItemAt } from './addRemove.js'
 
-const taskList = [
-  {
-    index: 0,
-    description: 'Going to the gym',
-    completed: false,
-  },
-  {
-    index: 1,
-    description: 'Going home',
-    completed: false,
-  },
-  {
-    index: 2,
-    description: 'Visit Friends and Family',
-    completed: false,
-  },
-];
+let tasks = []
+export function myTasks() {
+  return tasks
+}
 
-function populateList() {
-  for (let i = 0; i < taskList.length; i += 1) {
-    const newItem = document.createElement('li');
+const myList = document.querySelector('.task-lists')
 
-    const inputCheckbox = document.createElement('input');
-    inputCheckbox.type = 'checkbox';
-    inputCheckbox.className = 'box';
-    newItem.appendChild(inputCheckbox);
-    inputCheckbox.style.marginRight = '10px';
+export const generateList = (array) => {
+  array = array.sort((a, b) => a.index - b.index)
 
-    const span = document.createElement('span');
-    span.innerHTML = taskList[i].description;
-    newItem.appendChild(span);
+  clearDiv(myList)
 
-    const anchorElement = document.createElement('a');
-    anchorElement.classList.add('delete');
-    anchorElement.innerHTML = '<i class="fas fa-trash-alt"></i>';
-    anchorElement.style.float = 'right';
-    anchorElement.style.paddingLeft = '150px';
-    anchorElement.style.color = 'red';
-    newItem.appendChild(anchorElement);
+  for (let i = 0; i < array.length; i += 1) {
+    const item = array[i]
+    item.index = i + 1
+    const listItem = document.createElement('li')
+    listItem.classList.add('item')
 
-    listElement.appendChild(newItem);
+    const itemCheckbox = document.createElement('input')
+    itemCheckbox.type = 'checkbox'
+    itemCheckbox.setAttribute('index', `${item.index}`)
+    listItem.appendChild(itemCheckbox)
+
+    const taskInput = document.createElement('input')
+    taskInput.setAttribute('type', 'text')
+    taskInput.setAttribute('index', `${item.index}`)
+    taskInput.setAttribute('value', `${item.description}`)
+    taskInput.classList.add('description-text')
+    listItem.appendChild(taskInput)
+
+    const garbage = document.createElement('i')
+    garbage.classList.add('fas', 'fa-trash-alt', 'icon', 'trash')
+    garbage.setAttribute('index', `${item.index}`)
+    garbage.setAttribute('job', 'delete')
+    listItem.appendChild(garbage)
+
+    myList.appendChild(listItem)
   }
 }
 
-populateList();
+document.querySelector('#add-input').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    add()
+    const retrievedList = JSON.parse(localStorage.getItem('list'))
+    generateList(retrievedList)
+  }
+})
+
+myList.addEventListener('click', (event) => {
+  const elementClicked = event.target
+  const job = elementClicked.getAttribute('job')
+  const clickedIndex = elementClicked.getAttribute('index')
+  if (job === 'delete') {
+    removeItemAt(clickedIndex)
+  }
+})
+
+myList.addEventListener('change', (e) => {
+  const changedElement = e.target
+  changeInput(changedElement)
+})
+
+export const saveDataLocally = (toSave) => {
+  const stringifiedList = JSON.stringify(toSave)
+  localStorage.setItem('list', stringifiedList)
+}
+
+window.onload = () => {
+  if (localStorage.getItem('list') !== null) {
+    const retrievedList = JSON.parse(localStorage.getItem('list'))
+    tasks = retrievedList
+    generateList(tasks)
+  }
+}
