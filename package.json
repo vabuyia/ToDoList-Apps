@@ -7,12 +7,13 @@
     "start": "webpack serve --open",
     "build": "webpack",
     "dev": "webpack serve",
-    "test": "jest --coverage"
+    "test": "jest "
   },
   "keywords": [],
   "author": "Vincent Abuya and Andrea Alvarez",
   "license": "ISC",
   "dependencies": {
+    "jsdom": "^19.0.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
@@ -27,7 +28,7 @@
     "eslint-plugin-import": "^2.26.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
-    "image-webpack-loader": "^8.1.0",
+    "image-webpack-loader": "^2.0.0",
     "jest": "^28.1.1",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
@@ -39,15 +40,20 @@
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.1"
   },
-    "jest": {
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules", "bower_components", "shared"],
-
-      "verbose": true,
-   "moduleNameMapper": {
-
-            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "src/__mocks__/fileMock.js",
-            "\\.(css|less)$": "src/__mocks__/styleMock.js"
-          }
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "src/__mocks__/fileMock.js",
+      "\\.(css|less)$": "src/__mocks__/styleMock.js"
     }
+  }
 }

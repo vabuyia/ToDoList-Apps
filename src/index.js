@@ -7,12 +7,17 @@ import { add, clearDiv, changeInput, removeItemAt } from './addRemove.js'
 
 let tasks = []
 export function myTasks() {
-  return tasks
+  return tasks=[];
 }
 
-const myList = document.querySelector('.task-lists')
+export const getTasks = ( ) => tasks;
+
+
 
 export const generateList = (array) => {
+
+  const myList = document.querySelector('.task-lists')
+
   array = array.sort((a, b) => a.index - b.index)
 
   clearDiv(myList)
@@ -43,15 +48,31 @@ export const generateList = (array) => {
 
     myList.appendChild(listItem)
   }
+};
+ const ret = ()=> {
+  const toDo = document.querySelector('.to-do')
+  toDo.addEventListener('keyup', (e) => {
+    const inputDo = document.querySelector('#add-input')
+    let newToDo = inputDo.value.trim()
+    if (e.key === 'Enter' && newToDo) {
+      inputToDo.value = ''    
+      
+      const work = {
+        description: data,
+        completed: false,
+        id: tasks.length
+      }
+
+      tasks.push(work)
+
+      add()
+      const retrievedList = JSON.parse(localStorage.getItem('list'))
+      generateList(retrievedList)
+    }
+  })
 }
 
-document.querySelector('#add-input').addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    add()
-    const retrievedList = JSON.parse(localStorage.getItem('list'))
-    generateList(retrievedList)
-  }
-})
+ret();
 
 myList.addEventListener('click', (event) => {
   const elementClicked = event.target
