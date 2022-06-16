@@ -1,23 +1,20 @@
 /* eslint-disable no-unused-vars */
-import _ from 'lodash'
+//import _ from 'lodash'
 //import './style.css'
 
 // eslint-disable-next-line import/no-cycle
-import { add, clearDiv, changeInput, removeItemAt } from './addRemove.js'
+const { add, clearDiv, changeInput, removeItemAt } = require('./addRemove.js');
+// eslint-disable-next-line import/no-cycle
+//const { completeThis, clearComplete } = require('./completeTasks.js'); 
 
 let tasks = []
-export function myTasks() {
-  return tasks=[];
+function myTasks() {
+  return tasks
 }
 
-export const getTasks = ( ) => tasks;
+//const myList = document.querySelector('.task-lists')
 
-
-
-export const generateList = (array) => {
-
-  const myList = document.querySelector('.task-lists')
-
+const generateList = (array) => {
   array = array.sort((a, b) => a.index - b.index)
 
   clearDiv(myList)
@@ -30,14 +27,20 @@ export const generateList = (array) => {
 
     const itemCheckbox = document.createElement('input')
     itemCheckbox.type = 'checkbox'
+    itemCheckbox.checked = item.completed
     itemCheckbox.setAttribute('index', `${item.index}`)
+    itemCheckbox.setAttribute('job', 'complete')
     listItem.appendChild(itemCheckbox)
 
     const taskInput = document.createElement('input')
+    taskInput.setAttribute('job', 'change')
     taskInput.setAttribute('type', 'text')
     taskInput.setAttribute('index', `${item.index}`)
     taskInput.setAttribute('value', `${item.description}`)
     taskInput.classList.add('description-text')
+    if (item.completed) {
+      taskInput.classList.add('complete')
+    }
     listItem.appendChild(taskInput)
 
     const garbage = document.createElement('i')
@@ -48,31 +51,18 @@ export const generateList = (array) => {
 
     myList.appendChild(listItem)
   }
-};
- const ret = ()=> {
-  const toDo = document.querySelector('.to-do')
-  toDo.addEventListener('keyup', (e) => {
-    const inputDo = document.querySelector('#add-input')
-    let newToDo = inputDo.value.trim()
-    if (e.key === 'Enter' && newToDo) {
-      inputToDo.value = ''    
-      
-      const work = {
-        description: data,
-        completed: false,
-        id: tasks.length
-      }
-
-      tasks.push(work)
-
-      add()
-      const retrievedList = JSON.parse(localStorage.getItem('list'))
-      generateList(retrievedList)
-    }
-  })
 }
 
-ret();
+document.querySelector('#add-input').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+const textInputValue = document.querySelector('#add-input').value
+    add(textInputValue)
+    
+
+    const retrievedList = JSON.parse(localStorage.getItem('list'))
+    generateList(retrievedList)
+  }
+})
 
 myList.addEventListener('click', (event) => {
   const elementClicked = event.target
@@ -81,17 +71,30 @@ myList.addEventListener('click', (event) => {
   if (job === 'delete') {
     removeItemAt(clickedIndex)
   }
+  if (job === 'complete') {
+    completeThis(elementClicked)
+  }
 })
 
 myList.addEventListener('change', (e) => {
-  const changedElement = e.target
-  changeInput(changedElement)
+  if (e.target.getAttribute('job') === 'change') {
+    const changedElement = e.target
+    changeInput(changedElement)
+  }
 })
 
-export const saveDataLocally = (toSave) => {
+document.getElementById('delete-all').addEventListener('click', (e) => {
+  // let myParsedArray = JSON.parse(localStorage.getItem('list'));
+  e.preventDefault()
+  clearComplete(myTasks())
+  generateList(tasks)
+})
+
+const saveDataLocally = (toSave) => {
   const stringifiedList = JSON.stringify(toSave)
   localStorage.setItem('list', stringifiedList)
 }
+
 
 window.onload = () => {
   if (localStorage.getItem('list') !== null) {
@@ -100,3 +103,6 @@ window.onload = () => {
     generateList(tasks)
   }
 }
+
+module.exports= {myTasks, generateList};
+
