@@ -12,13 +12,13 @@ const add = (textInputValue) => {
   const TaskItem = {
     description: textInputValue,
     completed: false,
-    index: myTasks().length + 1,
+    index: tasks.length + 1,
   };
 
   const addedItem = TaskItem;
-  myTasks().push(addedItem);
+  tasks.push(addedItem);
   // saveDataLocally(myTasks());
-  return myTasks();
+  return tasks;
 };
 
 const clearDiv = (div) => {
@@ -28,17 +28,29 @@ const clearDiv = (div) => {
 };
 
 const removeItemAt = (index) => {
-  myTasks().splice(index - 1, 1);
-  return myTasks();
+  if (index > tasks.length) {
+    return null;
+  }
+  tasks.splice(index - 1, 1);
+  return tasks;
 };
 
-const changeInput = (element) => {
-  const newDescription = element.value;
-  const elementIndex = element.getAttribute('index');
-  myTasks()[elementIndex - 1].description = newDescription;
+const changeInput = (newDescription, elementIndex) => {
+  if (elementIndex > tasks.length) {
+    return null;
+  }
+  tasks.map((task) => {
+    if (task.index === elementIndex) {
+      return {
+        index: task.index, description: newDescription, complete: task.complete,
+      };
+    }
+    return task;
+  });
+  return myTasks();
   // saveDataLocally(myTasks());
 };
 
 module.exports = {
-  add, myTasks, removeItemAt, clearDiv, changeInput,
+  add, tasks, removeItemAt, clearDiv, changeInput,
 };

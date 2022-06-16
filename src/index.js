@@ -87,7 +87,9 @@ myList.addEventListener('click', (event) => {
 myList.addEventListener('change', (e) => {
   if (e.target.getAttribute('job') === 'change') {
     const changedElement = e.target;
-    changeInput(changedElement);
+    const newDescription = changedElement.value;
+    const elementIndex = changedElement.getAttribute('index');
+    changeInput(newDescription, elementIndex);
   }
 });
 
