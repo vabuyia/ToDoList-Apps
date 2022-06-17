@@ -1,31 +1,15 @@
-// eslint-disable-next-line import/no-cycle
-//import { tasks, saveDataLocally } from './index.js'
-// eslint-disable-next-line import/no-cycle
-import { removeItemAt } from './addRemove.js';
-
-const tasks = [];
-
+const arrayTasks = [{ description: 'task', completed: true }, { description: 'task', completed: false }];
 const completeThis = (element) => {
-
-  //const nextInput = element.nextSibling;
-  //const elementIndex = element.getAttribute('index');
-  //const isComplete = tasks[elementIndex - 1].completed;
-  //nextInput.classList.toggle('complete');
   if (element === true) {
-    tasks[element - 1].completed = false;
-  } else {
-    tasks[element - 1].completed = true;
+    return true;
   }
-  return tasks;
-
- // saveDataLocally(myTasks());
+  return false;
 };
 
 const clearComplete = () => {
-  const filteredTasks = tasks.filter((item) => item.completed);
-  filteredTasks.forEach((task) => {
-    removeItemAt(task.index);
-  });
+  const filteredTasks = arrayTasks.filter((item) => item.completed === false);
+
+  return filteredTasks.length;
 };
 
-module.exports = {completeThis, clearComplete};
+module.exports = { completeThis, clearComplete };

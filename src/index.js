@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-vars */
-// import _ from 'lodash'
-// import './style.css'
+import './style.css';
 
-// eslint-disable-next-line import/no-cycle
 const {
   add, clearDiv, changeInput, removeItemAt,
 } = require('./addRemove.js');
-// eslint-disable-next-line import/no-cycle
+
 const { completeThis, clearComplete } = require('./completeTasks.js');
 
 let tasks = [];
@@ -94,7 +91,6 @@ myList.addEventListener('change', (e) => {
 });
 
 document.getElementById('delete-all').addEventListener('click', (e) => {
-  // let myParsedArray = JSON.parse(localStorage.getItem('list'));
   e.preventDefault();
   clearComplete(myTasks());
   generateList(tasks);
