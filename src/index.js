@@ -1,10 +1,7 @@
-/* eslint-disable no-unused-vars */
-import _ from 'lodash';
 import './style.css';
 
-// eslint-disable-next-line import/no-cycle
 import { add, clearDiv, changeInput, removeItemAt } from './addRemove.js';
-// eslint-disable-next-line import/no-cycle
+
 import { completeThis, clearComplete } from './completeTasks.js';
 
 let tasks = [];
