@@ -1,6 +1,5 @@
-// eslint-disable-next-line import/no-cycle
 import { myTasks, saveDataLocally } from './index.js';
-// eslint-disable-next-line import/no-cycle
+
 import { removeItemAt } from './addRemove.js';
 
 export const completeThis = (element) => {

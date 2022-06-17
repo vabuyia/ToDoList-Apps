@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-cycle
 import { myTasks, generateList, saveDataLocally } from './index.js';
 
 export const add = () => {
