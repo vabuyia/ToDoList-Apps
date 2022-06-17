@@ -1,3 +1,5 @@
+![](https://img.shields.io/badge/Microverse-blueviolet)
+
 ## To Do list
 
 A simple To do List. It simply lists the things that you need to do and allows you to mark them as complete. A tool to help you organize your day!

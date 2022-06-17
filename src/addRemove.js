@@ -4,7 +4,7 @@ export const add = () => {
   const textInputValue = document.querySelector('#add-input').value;
   const TaskItem = {
     description: textInputValue,
-    completed: false,
+    complete: false,
     index: myTasks().length + 1,
   };
 
