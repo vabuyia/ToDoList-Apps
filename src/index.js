@@ -1,6 +1,17 @@
+<<<<<<< HEAD
 import './style.css';
 
 import { add, clearDiv, changeInput, removeItemAt } from './addRemove.js';
+=======
+
+
+import './style.css';
+
+
+import {
+  add, clearDiv, changeInput, removeItemAt,
+} from './addRemove.js';
+>>>>>>> 3cc94ac4efde9c8653cf6a825d5c2df56e9c874c
 
 import { completeThis, clearComplete } from './completeTasks.js';
 

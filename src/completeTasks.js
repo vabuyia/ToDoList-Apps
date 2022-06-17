@@ -13,7 +13,7 @@ export const completeThis = (element) => {
     myTasks()[elementIndex - 1].completed = true;
   }
   saveDataLocally(myTasks());
-}
+};
 
 export const clearComplete = () => {
   const filteredTasks = myTasks().filter((item) => item.completed);

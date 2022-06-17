@@ -16,7 +16,7 @@ In this project, you will build a simple HTML list of To Do tasks. This simple w
 
 Screenshot:
 
-Live DEMO[https://vabuyia.github.io/ToDoList-Apps/]
+https://vabuyia.github.io/ToDoList-Apps/
 
 ### Prerequisites
 
