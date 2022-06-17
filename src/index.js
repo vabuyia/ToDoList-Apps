@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-import './style.css';
-
-import { add, clearDiv, changeInput, removeItemAt } from './addRemove.js';
-=======
-
-
 import './style.css';
 
 
 import {
   add, clearDiv, changeInput, removeItemAt,
 } from './addRemove.js';
->>>>>>> 3cc94ac4efde9c8653cf6a825d5c2df56e9c874c
 
 import { completeThis, clearComplete } from './completeTasks.js';
 
@@ -35,7 +27,7 @@ export const generateList = (array) => {
 
     const itemCheckbox = document.createElement('input');
     itemCheckbox.type = 'checkbox';
-    itemCheckbox.checked = item.completed;
+    itemCheckbox.checked = item.complete;
     itemCheckbox.setAttribute('index', `${item.index}`);
     itemCheckbox.setAttribute('job', 'complete');
     listItem.appendChild(itemCheckbox);
@@ -46,7 +38,7 @@ export const generateList = (array) => {
     taskInput.setAttribute('index', `${item.index}`);
     taskInput.setAttribute('value', `${item.description}`);
     taskInput.classList.add('description-text');
-    if (item.completed) {
+    if (item.complete) {
       taskInput.classList.add('complete');
     }
     listItem.appendChild(taskInput);
