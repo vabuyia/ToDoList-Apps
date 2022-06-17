@@ -1,8 +1,3 @@
-// eslint-disable-next-line import/no-cycle
-// const { generateList, saveDataLocally } = require('./index.js');
-
-// const myTasks  = require('./index.js');
-
 const tasks = [];
 function myTasks() {
   return tasks;
@@ -17,7 +12,6 @@ const add = (textInputValue) => {
 
   const addedItem = TaskItem;
   tasks.push(addedItem);
-  // saveDataLocally(myTasks());
   return tasks;
 };
 
@@ -48,7 +42,6 @@ const changeInput = (newDescription, elementIndex) => {
     return task;
   });
   return myTasks();
-  // saveDataLocally(myTasks());
 };
 
 module.exports = {
